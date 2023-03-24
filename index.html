@@ -6,7 +6,30 @@
     <title>Document</title>
     <script>
         function testing() {
+            function makeUniqueId(length) {
+                let result = "";
+                const characters = "ABCDEFGHJKLMNPQRSTUVWXYZ0123456789";
+                const charactersLength = characters.length;
+                for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                }
+                return result;
+            }
             console.log("HELLO123");
+            const appKey = "hIbK5e067a125621e4d6fb27aee9a08069e6c";
+            const appName = "testing"
+            const langVal = "en"
+            const locationStr = `truecallersdk://truesdk/web_verify?requestNonce=${makeUniqueId(10)}&partnerKey=${appKey}&partnerName=${appName}&lang=${langVal}&title=${"Hello"}`
+            console.log("LocationStr", locationStr);
+            window.location = locationStr;
+
+            setTimeout(function() {
+            if( document.hasFocus() ){
+                window.alert("App not installed");
+            }else{
+                console.log("Yaaaa");
+            }
+            }, 600);
         }
     </script>
 </head>
